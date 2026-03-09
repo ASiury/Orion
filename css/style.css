@@ -1,0 +1,101 @@
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #374151;
+        }
+
+        .cabecalho{
+            margin-bottom: 30px;
+        }
+
+        /* Estilos dos Cards */
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Topbar e Busca */
+        .topbar-icon {
+            color: #d1d5db;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        .search-container {
+            background-color: #ffffff;
+            border-radius: 50px;
+            padding: 8px 20px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 100%;
+            margin-left: 10px;
+            color: #6b7280;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tipografia Específica */
+        .text-muted-custom { color: #6b7280; }
+        .kpi-title { font-size: 0.95rem; font-weight: 500; }
+        .kpi-value { font-size: 1.8rem; font-weight: 700; color: #374151; }
+        
+        /* Barra de Progresso */
+        .progress-custom {
+            height: 6px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+        }
+        .progress-bar-custom {
+            background-color: #2563eb;
+        }
+
+        /* Tabela */
+        .table > :not(caption) > * > * {
+            padding: 1rem 0.5rem;
+            border-bottom-color: #f3f4f6;
+        }
+        .table th {
+            color: #4b5563;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .table td { vertical-align: middle; }
+        .id-text { font-size: 1.2rem; font-weight: 700; color: #4b5563; }
+        .route-text { font-weight: 600; color: #6b7280; font-size: 0.9rem; }
+        
+        /* Botão Nova Rota */
+        .btn-primary-custom {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-primary-custom:hover {
+            background-color: #1d4ed8;
+            color: white;
+        }
+
+        /* Placeholder do Mapa com SVG para simular rotas */
+        .map-container {
+            background-color: #dbeafe;
+            height: 250px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
