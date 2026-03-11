@@ -3,152 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Protótipo | Logística</title>
+    <title>ORION | Planejamento de Rota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-<div class="container-fluid p-4">
-    
-    <header class="cabecalho mb-4">
-        <nav class="navbar navbar-expand-lg bg-white rounded-4 shadow-sm px-3">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center text-primary">
-                    <i class="fa-solid fa-truck-fast fs-2 me-2"></i>
-                    <span class="fs-4 fw-bold" style="letter-spacing: 1px;">ORION</span>
-                </div>
-                
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
-                        <li class="nav-item">
-                            <a class="nav-link " href="Dashboard.html">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active fw-semibold" href="rotas.html">Controle de rotas</a>
-                        </li>
-                    </ul>          
+    <div class="container-fluid p-4 flex-grow-1 d-flex flex-column">
+        <header class="cabecalho mb-4">
+            <nav class="navbar navbar-expand-lg bg-white rounded-4 shadow-sm px-3">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center text-primary">
+                        <i class="fa-solid fa-truck-fast fs-2 me-2"></i>
+                        <a href="index.html" class="fs-4 fw-bold text-decoration-none brand-spacing">ORION</a>
+                    </div>
                     
-                    <div class="d-flex align-items-center gap-3">
-                        <div class="search-container d-flex align-items-center">
-                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                            <input type="text" placeholder="Buscar rotas ou motoristas...">
-                        </div>
-                        <div class="user-avatar shadow-sm" role="button">
-                            <i class="fa-solid fa-user text-secondary"></i>                
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="rotas.html">Controle de rotas</a>
+                            </li>
+                        </ul>          
+                        
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="search-container d-flex align-items-center">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                                <input type="text" placeholder="Buscar rotas ou motoristas...">
+                            </div>
                         </div>
                     </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="flex-grow-1">
+            <div class="card bg-white border-0 shadow-sm" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card-header bg-white border-bottom px-4 pt-4 pb-3">
+                    <h4 class="fw-bold text-dark mb-1">Planejando Sua Rota</h4>
+                    <span class="text-muted" style="font-size: 0.95rem;">Assistente de Otimização</span>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <form id="formPlanejamento">
+                        <div class="row g-5">
+                            <div class="col-12 col-md-7">
+                                <h5 class="fw-bold text-secondary mb-4 d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-circle" style="font-size: 0.4rem;"></i> Carga
+                                </h5>
+
+                                <div class="form-floating mb-3 shadow-sm rounded">
+                                    <input type="text" class="form-control" id="origemCarga" placeholder="Origem" value="São Paulo, SP">
+                                    <label for="origemCarga" class="text-muted">Origem</label>
+                                </div>
+
+                                <div class="form-floating mb-3 shadow-sm rounded">
+                                    <input type="text" class="form-control" id="destinoCarga" placeholder="Destino" value="Rio de Janeiro, RJ">
+                                    <label for="destinoCarga" class="text-muted">Destino</label>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-6">
+                                        <div class="form-floating shadow-sm rounded">
+                                            <select class="form-select" id="volumeCarga" aria-label="Volume">
+                                                <option value="800" selected>800</option>
+                                                <option value="1000">1000</option>
+                                            </select>
+                                            <label for="volumeCarga" class="text-muted">Volume</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating shadow-sm rounded">
+                                            <select class="form-select" id="pesoCarga" aria-label="Peso">
+                                                <option value="20000" selected>600</option>
+                                                <option value="30000">800</option>
+                                            </select>
+                                            <label for="pesoCarga" class="text-muted">Peso</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-floating shadow-sm rounded">
+                                            <select class="form-select" id="tipoCarga" aria-label="Tipo">
+                                                <option value="Perecível" selected>Perecível</option>
+                                                <option value="Consumo durável">Consumo durável</option>
+                                            </select>
+                                            <label for="tipoCarga" class="text-muted">Tipo</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-floating mb-4 shadow-sm rounded">
+                                    <input type="text" class="form-control" id="dataCarga" placeholder="Data partida" value="25 de Abril - 2025 / 08:00">
+                                    <label for="dataCarga" class="text-muted">Data de saída</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-5">
+                                <h5 class="fw-bold text-secondary mb-4 d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-circle" style="font-size: 0.4rem;"></i> Recursos
+                                </h5>
+
+                                <div class="form-floating mb-4 shadow-sm rounded">
+                                    <select class="form-select" id="Prioridade" aria-label="Prioridade">
+                                        <option value="Baixa" selected>Baixa</option>
+                                        <option value="Média">Média</option>
+                                        <option value="Média">Alta</option>
+                                    </select>
+                                    <label for="prioridade" class="text-muted">Prioridade</label>
+                                </div>
+
+                                <div class="form-floating mb-3 shadow-sm rounded">
+                                    <input type="text" class="form-control" id="veiculoRecurso" placeholder="Idveículo" value="G-34">
+                                    <label for="veiculoRecurso" class="text-muted">ID veículo</label>
+                                </div>
+
+                                <div class="form-floating mb-4 shadow-sm rounded">
+                                    <input type="text" class="form-control" id="motorista" placeholder="motorista" value="luan.pereira">
+                                    <label for="motorista" class="text-muted">Motorista</label>
+                                </div>
+
+                                <div class="d-flex flex-column gap-3 mt-5">
+                                    <button type="submit" class="btn btn-orion-primary btn-lg shadow-sm">
+                                        Calcular Melhor Rota
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </nav>
-    </header>
-    <main>
-    <div class="card bg-white border-0 shadow-sm" style="border-radius: 12px; max-width: 1000px; margin: 0 auto;">
-        
-        <div class="card-header bg-white border-bottom px-4 pt-4 pb-3">
-            <h4 class="fw-bold text-dark mb-1">Planejando Sua Rota</h4>
-            <span class="text-muted" style="font-size: 0.95rem;">Assistente de Otimização</span>
-        </div>
-
-        <div class="card-body p-4 p-md-5">
-            <form id="formPlanejamento">
-                <div class="row g-5">
-                    
-                    <div class="col-12 col-md-7">
-                        <h5 class="fw-bold text-secondary mb-4 d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-circle" style="font-size: 0.4rem;"></i> Carga
-                        </h5>
-
-                        <div class="form-floating custom-form-floating mb-3 shadow-sm rounded">
-                            <input type="text" class="form-control" id="origemCarga" placeholder="Origem" value="São Paulo, SP">
-                            <label for="origemCarga" class="text-muted">Origem</label>
-                        </div>
-
-                        <div class="form-floating custom-form-floating mb-3 shadow-sm rounded">
-                            <input type="text" class="form-control" id="destinoCarga" placeholder="Destino" value="Rio de Janeiro, RJ">
-                            <label for="destinoCarga" class="text-muted">Destino</label>
-                        </div>
-
-                        <div class="row g-3 mb-3">
-                            <div class="col-6">
-                                <div class="form-floating custom-form-floating shadow-sm rounded">
-                                    <select class="form-select" id="volumeCarga" aria-label="Volume">
-                                        <option value="800" selected>800</option>
-                                        <option value="1000">1000</option>
-                                    </select>
-                                    <label for="volumeCarga" class="text-muted">Volume</label>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-floating custom-form-floating shadow-sm rounded">
-                                    <select class="form-select" id="pesoCarga" aria-label="Peso">
-                                        <option value="20000" selected>20000</option>
-                                        <option value="30000">30000</option>
-                                    </select>
-                                    <label for="pesoCarga" class="text-muted">Peso</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-floating custom-form-floating mb-4 shadow-sm rounded">
-                            <input type="text" class="form-control" id="dataCarga" placeholder="Data" value="25 de Abril - 2025">
-                            <label for="dataCarga" class="text-muted">Data</label>
-                        </div>
-
-                        <div class="input-group shadow-sm rounded overflow-hidden border border-secondary-subtle bg-white custom-search-input">
-                            <span class="input-group-text bg-white border-0 ps-3">
-                                <i class="fa-solid fa-magnifying-glass fs-5 text-dark"></i>
-                            </span>
-                            <input type="text" class="form-control border-0 py-3 text-muted" placeholder="Buscar cargas cadastradas">
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-5">
-                        <h5 class="fw-bold text-secondary mb-4 d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-circle" style="font-size: 0.4rem;"></i> Recursos
-                        </h5>
-
-                        <div class="form-floating custom-form-floating mb-3 shadow-sm rounded">
-                            <input type="text" class="form-control" id="veiculoRecurso" placeholder="Veículo" value="Caminhão Pequeno">
-                            <label for="veiculoRecurso" class="text-muted">Veículo</label>
-                        </div>
-
-                        <div class="form-floating custom-form-floating mb-4 shadow-sm rounded">
-                            <input type="text" class="form-control" id="origemRecurso" placeholder="Origem" value="São Paulo, SP">
-                            <label for="origemRecurso" class="text-muted">Origem</label>
-                        </div>
-
-                        <div class="d-flex flex-column gap-3 mt-5">
-                            <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm" style="background-color: #1d4ed8; border-color: #1d4ed8; border-radius: 8px;">
-                                Calcular Melhor Rota
-                            </button>
-                            <button type="button" onclick="voltarParaDashboard()" class="btn btn-light btn-lg fw-bold shadow-sm border border-secondary-subtle" style="border-radius: 8px; color: #4b5563; background-color: #f3f4f6;">
-                                Voltar
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </form>
-        </div>
+        </main>
     </div>
-    </main>
-    <footer class="bg-dark text-white py-4 mt-5">
+
+    <footer class="bg-dark text-white py-4 mt-auto">
         <div class="container text-center text-muted">
             <div class="d-flex justify-content-center align-items-center mb-3 text-white">
                 <i class="fa-solid fa-truck-fast fs-3 me-2"></i>
-                <span class="fs-5 fw-bold">ORION</span>
+                <span class="fs-5 fw-bold brand-spacing">ORION</span>
             </div>
             <p class="mb-0 small">&copy; 2026 ORION Logística. Protótipo de Sistema.</p>
         </div>
     </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/planejamento.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/planejamento.js"></script>
 </body>
 </html>

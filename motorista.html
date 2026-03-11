@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Protótipo | Logística</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+    
+    <header class="container pt-4 mb-4">
+        <nav class="navbar navbar-expand-lg bg-white rounded-4 shadow-sm px-4 py-3">
+            <div class="container-fluid p-0">
+                <a href="index.html" class="navbar-brand d-flex align-items-center text-primary fw-bold" style="letter-spacing: 1px;">
+                    <i class="fa-solid fa-truck-fast fs-2 me-2"></i> ORION
+                </a>
+                
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>              
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="Dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active fw-semibold text-dark" href="rotas.html">Controle de rotas</a>
+                        </li>
+                    </ul>         
+                    
+                    <div class="d-flex align-items-center mt-3 mt-lg-0">
+                        <div class="search-container d-flex align-items-center bg-light rounded-pill px-3 py-2" style="width: 300px; max-width: 100%;">
+                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            <input type="text" class="border-0 bg-transparent w-100 ms-2 text-muted" placeholder="Buscar rotas ou motoristas..." style="outline: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mb-5">
+    
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+            <div>
+                <h2 class="h4 mb-1 text-dark fw-bold">Gestão de Acessos</h2>
+                <p class="text-muted-custom mb-0">Gerencie os cadastros de motoristas e operadores.</p>
+            </div>
+            <button type="button" class="btn btn-primary-custom d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fa-solid fa-user-plus"></i> Novo Motorista
+            </button>
+        </div>
+
+        <div class="card p-4 border-0 shadow-sm mb-5">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-start">Nome de Usuário</th>
+                            <th class="text-start">CPF</th>
+                            <th class="text-start">Data de Cadastro</th>
+                            <th class="text-start">Status</th>
+                            <th class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">joao.silva</td>
+                            <td class="text-start text-muted">000.000.000-00</td>
+                            <td class="text-start text-muted">01/01/2024</td>
+                            <td class="text-start"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1">Em rota</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger" title="Excluir"><i class="fa-solid fa-trash"></i></button>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">maria.oliveira</td>
+                            <td class="text-start text-muted">111.111.111-11</td>
+                            <td class="text-start text-muted">15/02/2024</td>
+                            <td class="text-start"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1">Em rota</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger" title="Excluir"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">josé.souza</td>
+                            <td class="text-start text-muted">222.222.222-22</td>
+                            <td class="text-start text-muted">20/03/2024</td>
+                            <td class="text-start"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1">Em rota</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger" title="Excluir"><i class="fa-solid fa-trash"></i></button>     
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">luan.pereira</td>
+                            <td class="text-start text-muted">333.333.333-33</td>
+                            <td class="text-start text-muted">10/04/2024</td>
+                            <td class="text-start"><span class="badge bg-success bg-opacity-10 text-success px-2 py-1">Disponível</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger" title="Excluir"><i class="fa-solid fa-trash"></i></button> 
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+            <div>
+                <h2 class="h4 mb-1 text-dark fw-bold">Gestão de Veículos</h2>
+                <p class="text-muted-custom mb-0">Gerencie a frota de veículos disponíveis.</p>
+            </div>
+            <button type="button" class="btn btn-primary-custom d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#modalVeiculo">
+                <i class="fa-solid fa-truck"></i> Novo Veículo
+            </button>
+        </div>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-start">Placa</th>
+                            <th class="text-start">Modelo</th>
+                            <th class="text-start">ID Frota</th>
+                            <th class="text-start">Status</th>
+                            <th class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">ABC-1234</td>
+                            <td class="text-start text-muted">Mercedes-Benz Sprinter</td>
+                            <td class="text-start text-muted">G-34</td>
+                            <td class="text-start"><span class="badge bg-success bg-opacity-10 text-success px-2 py-1">Disponível</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">XYZ-9876</td>
+                            <td class="text-start text-muted">Volkswagen Delivery</td>
+                            <td class="text-start text-muted">G-12</td>
+                            <td class="text-start"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1">Em Rota</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">MNO-4567</td>
+                            <td class="text-start text-muted">Fiat Ducato</td>
+                            <td class="text-start text-muted">M-23</td>
+                            <td class="text-start"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1">Em Rota</span></td>
+                            <td class="text-end">   
+                                <button class="btn btn-sm btn-light text-primary me-1"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-start fw-semibold text-dark">PQR-7890</td>
+                            <td class="text-start text-muted">Renault Master</td>
+                            <td class="text-start text-muted">P-12</td>
+                            <td class="text-start"><span class="badge bg-warning bg-opacity-10 text-warning px-2 py-1">Em rota</span></td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-light text-primary me-1"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-light text-danger"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>        
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg"> 
+                <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+                    
+                    <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
+                        <h5 class="modal-title fw-bold" id="modalLabel">
+                            <i class="fa-solid fa-id-card text-primary me-2"></i> Cadastro de Motorista
+                        </h5>
+                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body p-4">
+                        <form action="#" class="needs-validation" novalidate>
+                            
+                            <div class="row g-3"> 
+                                <div class="col-md-12">
+                                    <label for="name" class="form-label fw-semibold kpi-title">NOME COMPLETO</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="name" placeholder="Ex: João da Silva" name="name" required>
+                                    <div class="invalid-feedback">Por favor, preencha o nome completo.</div>    
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="uname" class="form-label fw-semibold kpi-title">NOME DE USUÁRIO</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="uname" placeholder="Ex: joao.silva" name="uname" required>
+                                    <div class="invalid-feedback">Por favor, preencha o nome de usuário.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="cpf" class="form-label fw-semibold kpi-title">CPF</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="cpf" placeholder="Ex: 000.000.000-00" name="cpf" required>
+                                    <div class="invalid-feedback">Por favor, preencha o CPF.</div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="vchl" class="form-label fw-semibold kpi-title">VEÍCULO ASSOCIADO</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="vchl" placeholder="Ex: G-34" name="vchl">
+                                    <div class="invalid-feedback">Por favor, informe o id de veículo associado.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="CNH" class="form-label fw-semibold kpi-title">CNH</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="CNH" placeholder="Ex: 12345678900" name="CNH">
+                                    <div class="invalid-feedback">Por favor, preencha a CNH.</div>  
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <label for="pwd" class="form-label fw-semibold kpi-title">SENHA DE ACESSO</label>
+                                    <input type="password" class="form-control bg-light border-0 py-2" id="pwd" placeholder="Digite uma senha forte" name="pswd" required>
+                                    <div class="invalid-feedback">A senha é obrigatória.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mt-4 mb-2">
+                                <input class="form-check-input" type="checkbox" id="myCheck" name="remember" required>
+                                <label class="form-check-label text-muted-custom" for="myCheck">
+                                    Confirmo que os dados estão corretos e concordo com as políticas do sistema.
+                                </label>
+                                <div class="invalid-feedback">É necessário confirmar para prosseguir.</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                                <button type="submit" class="btn btn-primary-custom px-4">Salvar Cadastro</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>    
+<body class="d-flex flex-column min-vh-100">   
     
     <header class="cabecalho mb-4">
         <div class="container-fluid p-4 pb-0">
@@ -39,22 +39,18 @@
                                 <i class="fa-solid fa-magnifying-glass text-muted"></i>
                                 <input type="text" placeholder="Buscar rotas ou motoristas...">
                             </div>
-                            <div class="user-avatar shadow-sm" role="button">
-                                <i class="fa-solid fa-user text-secondary"></i>                
-                            </div>
                         </div>
                     </div>
-
                 </div>
             </nav>
         </div>
     </header>
 
-    <main class="container-fluid px-4">
+    <main class="container-fluid px-4 pb-5 flex-grow-1">
         
         <div class="row g-4 mb-4">
             
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="kpi-title text-muted-custom">Economia do mês</div>
@@ -67,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="kpi-title text-muted-custom">Ocupação Média</div>
@@ -80,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="kpi-title text-muted-custom">Rotas ativas</div>
@@ -91,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="kpi-title text-muted-custom">Alertas</div>
@@ -154,7 +150,7 @@
         </div>
     </main>
 
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class="bg-dark text-white py-4 mt-auto">
         <div class="container text-center text-muted">
             <div class="d-flex justify-content-center align-items-center mb-3 text-white">
                 <i class="fa-solid fa-truck-fast fs-3 me-2"></i>
