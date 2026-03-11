@@ -10,39 +10,43 @@
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
     
-    <header class="container pt-4 mb-4">
-        <nav class="navbar navbar-expand-lg bg-white rounded-4 shadow-sm px-4 py-3">
-            <div class="container-fluid p-0">
-                <a href="index.html" class="navbar-brand d-flex align-items-center text-primary fw-bold" style="letter-spacing: 1px;">
-                    <i class="fa-solid fa-truck-fast fs-2 me-2"></i> ORION
-                </a>
-                
-                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>              
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item">
-                            <a class="nav-link text-secondary" href="Dashboard.html">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active fw-semibold text-dark" href="rotas.html">Controle de rotas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active fw-semibold" href="motorista.html">Funcioários e frota</a>
-                        </li>
-                    </ul>         
+    <header class="cabecalho mb-4">
+        <div class="container-fluid p-4 pb-0">
+            <nav class="navbar navbar-expand-lg bg-white rounded-4 shadow-sm px-3">
+                <div class="container-fluid">
                     
-                    <div class="d-flex align-items-center mt-3 mt-lg-0">
-                        <div class="search-container d-flex align-items-center bg-light rounded-pill px-3 py-2" style="width: 300px; max-width: 100%;">
-                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                            <input type="text" class="border-0 bg-transparent w-100 ms-2 text-muted" placeholder="Buscar rotas ou motoristas..." style="outline: none;">
+                    <div class="d-flex align-items-center text-primary">
+                        <i class="fa-solid fa-truck-fast fs-2 me-2"></i>
+                        <a href="index.html" class="fs-4 fw-bold text-decoration-none" style="letter-spacing: 1px;">ORION</a>
+                    </div>                
+                    
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="rotas.html">Controle de rotas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active fw-semibold" href="motorista.html">Funcioários e frota</a>
+                            </li>
+                        </ul>          
+                        
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="search-container d-flex align-items-center">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                                <input type="text" placeholder="Buscar rotas ou motoristas...">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
     <main class="container mb-5">
