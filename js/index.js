@@ -99,7 +99,7 @@ document.getElementById('cpf').addEventListener('input', function (e) {
             form.reset();
             form.classList.remove('was-validated');
             
-            const modalElement = document.getElementById('myModal');
+            const modalElement = document.getElementById('motoModal');
             const modalInstance = bootstrap.Modal.getInstance(modalElement);
             if (modalInstance) {
                 modalInstance.hide();
