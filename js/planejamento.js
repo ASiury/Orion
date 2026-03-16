@@ -21,6 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function voltarParaDashboard() {
+function voltarParadashboard() {
     window.history.back();
 }
