@@ -12,12 +12,14 @@
 
     <div class="container-fluid p-4 flex-grow-1 d-flex flex-column">
         <header class="cabecalho mb-4">
+        <div class="container-fluid p-4 pb-0">
             <nav class="navbar navbar-expand-lg bg-white rounded-4 shadow-sm px-3">
                 <div class="container-fluid">
+                    
                     <div class="d-flex align-items-center text-primary">
                         <i class="fa-solid fa-truck-fast fs-2 me-2"></i>
-                        <a href="index.html" class="fs-4 fw-bold text-decoration-none brand-spacing">ORION</a>
-                    </div>
+                        <a href="index.html" class="fs-4 fw-bold text-decoration-none" style="letter-spacing: 1px;">ORION</a>
+                    </div>                
                     
                     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
@@ -29,22 +31,20 @@
                                 <a class="nav-link" href="Dashboard.html">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  active fw-semibold" href="rotas.html">Controle de rotas</a>
+                                <a class="nav-link active fw-semibold" href="rotas.html">Controle de rotas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="motorista.html">Funcioários e frota</a>
                             </li>
-                        </ul>          
-                        
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="search-container d-flex align-items-center">
-                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                                <input type="text" placeholder="Buscar rotas ou motoristas...">
-                            </div>
-                        </div>
+                        </ul> 
+                        <form class="d-flex" role="Buscar">
+                            <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar"/>
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>                                       
                     </div>
                 </div>
             </nav>
+        </div>
         </header>
 
         <main class="flex-grow-1">

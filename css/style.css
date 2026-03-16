@@ -20,7 +20,7 @@ body {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
 }
 
-.search-container {
+.Buscar-container {
     background-color: #ffffff;
     border-radius: 50px;
     padding: 10px 20px;
@@ -30,12 +30,12 @@ body {
     transition: all 0.2s;
 }
 
-.search-container:focus-within {
+.Buscar-container:focus-within {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.search-container input {
+.Buscar-container input {
     border: none;
     outline: none;
     background: transparent;

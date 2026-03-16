@@ -1,4 +1,3 @@
-/* Configurações específicas da Landing Page */
 .landing-page {
     background-color: #f8fafc;
     overflow-x: hidden;
@@ -14,7 +13,6 @@
     position: relative;
 }
 
-/* Ilustração abstrata no Hero */
 .hero-graphics {
     transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
     transition: transform 0.5s ease;

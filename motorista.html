@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100 bg-light">
+<body class="d-flex flex-column min-vh-100 bg-light" >
     
     <header class="cabecalho mb-4">
         <div class="container-fluid p-4 pb-0">
@@ -35,14 +35,11 @@
                             <li class="nav-item">
                                 <a class="nav-link active fw-semibold" href="motorista.html">Funcioários e frota</a>
                             </li>
-                        </ul>          
-                        
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="search-container d-flex align-items-center">
-                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                                <input type="text" placeholder="Buscar rotas ou motoristas...">
-                            </div>
-                        </div>
+                        </ul> 
+                        <form class="d-flex" role="Buscar">
+                            <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar"/>
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>                                       
                     </div>
                 </div>
             </nav>
