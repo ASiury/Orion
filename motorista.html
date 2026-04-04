@@ -222,6 +222,7 @@
                         <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
+                    <!--anexar documentos / exames-->
                     <div class="modal-body p-4">
                         <form action="#" class="needs-validation" novalidate>
                             
@@ -233,23 +234,11 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="uname" class="form-label fw-semibold kpi-title">NOME DE USUÁRIO</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="uname" placeholder="Ex: joao.silva" name="uname" required>
-                                    <div class="invalid-feedback">Por favor, preencha o nome de usuário.</div>
-                                </div>
-
-                                <div class="col-md-6">
                                     <label for="cpf" class="form-label fw-semibold kpi-title">CPF</label>
                                     <input type="text" class="form-control bg-light border-0 py-2" id="cpf" placeholder="Ex: 000.000.000-00" name="cpf" required>
                                     <div class="invalid-feedback">Por favor, preencha o CPF.</div>
                                 </div>
                                 
-                                <div class="col-md-6">
-                                    <label for="vchl" class="form-label fw-semibold kpi-title">VEÍCULO PRÓPRIO (se possuir)</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="vchl" placeholder="Ex: G-34" name="vchl">
-                                    <div class="invalid-feedback">Por favor, informe o id de veículo próprio.</div>
-                                </div>
-
                                 <div class="col-md-6">
                                     <label for="CNH" class="form-label fw-semibold kpi-title">CNH</label>
                                     <input type="text" class="form-control bg-light border-0 py-2" id="CNH" placeholder="Ex: 12345678900" name="CNH">
@@ -297,6 +286,17 @@
                             
                             <div class="row g-3"> 
                                 <div class="col-md-12">
+                                    <label for="placa" class="form-label fw-semibold kpi-title">PLACA</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="placa" placeholder="Ex: ABC-1234" name="placa" required>
+                                    <div class="invalid-feedback">Por favor, preencha a placa do veículo.</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="col-md-12">
+                                    <label for="modelo" class="form-label fw-semibold kpi-title">MODELO</label>
+                                    <input type="text" class="form-control bg-light border-0 py-2" id="modelo" placeholder="Ex: Mercedes-Benz Sprinter" name="modelo" required>
+                                    <div class="invalid-feedback">Por favor, preencha o modelo do veículo.</div>
                                 </div>
                             </div>
                             
