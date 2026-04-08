@@ -54,58 +54,22 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <div class="row g-4 h-100">                   
-                        
-                        <div class="col-12 col-lg-3 d-flex flex-column gap-4">
-                            <div>
-                                <h6 class="text-muted-custom fw-bold mb-3">FILTROS RÁPIDOS</h6>
-                                <select class="form-select custom-select mb-3 shadow-sm border-secondary-subtle">
-                                    <option selected>Status</option>
-                                    <option value="1">Em processo</option>
-                                    <option value="2">Atrasada</option>
-                                </select>
-                                <select class="form-select custom-select mb-3 shadow-sm border-secondary-subtle">
-                                    <option selected>Motoristas</option>
-                                </select>
-                                <select class="form-select custom-select shadow-sm border-secondary-subtle">
-                                    <option selected>Veículos</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <h6 class="text-muted-custom fw-bold mb-3">ROTAS ATIVAS</h6> 
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="fw-bold text-dark" style="font-size: 1.1rem;">A-332</span>                                    
-                                    <span class="text-muted"><i class="fa-solid fa-circle text-success me-2" style="font-size: 0.7rem;"></i>Em processo</span>
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="fw-bold text-dark" style="font-size: 1.1rem;">B-678</span>
-                                    <span class="text-muted"><i class="fa-solid fa-circle text-danger me-2" style="font-size: 0.7rem;"></i>Atrasada</span>
-                                </div>
-                                
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="fw-bold text-dark" style="font-size: 1.1rem;">C-232</span>
-                                    <span class="text-muted"><i class="fa-solid fa-circle text-success me-2" style="font-size: 0.7rem;"></i>Em processo</span>
-                                </div>                  
-                            </div>
-                        </div>
-
+                    <div class="row g-4 h-100">          
                         <div class="col-12 col-lg-6">
                             <div class="map-view rounded-3 overflow-hidden position-relative w-100 h-100 min-vh-50 border border-secondary-subtle shadow-sm" style="background-color: #f4f5f7; min-height: 400px;">
                                 <div class="position-absolute bottom-0 start-0 p-2 px-3 fw-medium text-dark bg-white rounded-end-3 shadow-sm mb-4">São Paulo, SP</div>
                                     <figure class=""> 
-                                        <img src="img/MAPA 00 SP RJ" class="img-fluid" alt="sp_rj">
+                                        <img src="img/SPRJ.jpg" class="img-fluid" alt="sp_rj">
                                     </figure>
                                 <div class="position-absolute bottom-0 end-0 p-2 px-3 fw-medium text-dark bg-white rounded-start-3 shadow-sm mb-4">Rio de Janeiro, RJ</div>
                             </div>
                         </div>
 
                         <div class="col-12 col-lg-3 d-flex flex-column">
-                            <h6 class="text-muted-custom fw-bold mb-3">DETALHES</h6>
+                            <h6 class="text-muted-custom fw-bold mb-4">DETALHES</h6>
                             
                             <div class="mb-3">
-                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Rota</span>
+                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">ID viagem</span>
                                 <h4 id="meuBotao" class="fw-bold text-dark mb-2">A-332</h4>
                                 <div class="progress" style="height: 6px; border-radius: 6px;">
                                     <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
@@ -114,16 +78,19 @@
 
                             <hr class="text-muted opacity-25 my-3">
 
-                            <div class="mb-3">
-                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Próxima Parada</span>
+                            <div class="container">
+                                <span class="text-muted mb-1" style="font-size: 0.9rem;">Origem</span>
+                                <h6 class="fw-bold text-dark">São Paulo, SP</h6>
+
+                                <span class="text-muted mb-1" style="font-size: 0.9rem;">Destino</span>
                                 <h6 class="fw-bold text-dark">Rio de Janeiro, RJ</h6>
                             </div>
 
                             <hr class="text-muted opacity-25 my-3">
 
                             <div class="mb-3">
-                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Motorista</span>
-                                <h6 class="fw-bold text-dark"> João da Silva Filho</h6>
+                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">ID motorista</span>
+                                <h6 class="fw-bold text-dark"></h6>
                             </div>
 
                             <div class="mb-3">
@@ -138,12 +105,9 @@
 
                             <hr class="text-muted opacity-25 my-3">
 
-                            <button class="btn btn-primary w-100 py-2 mt-auto fs-6 shadow-sm">
+                            <button class="btn btn-primary w-100 py-2 mt-auto fs-6 shadow-sm mb-4">
                                 <i class="fa-solid fa-pen me-2"></i> Editar
                             </button>
-
-                            <hr class="text-muted opacity-25 my-3">
-
                             <a href="tel:+551100000000" class="btn btn-success w-100 py-2 mt-auto fs-6 shadow-sm text-decoration-none">
                                 <i class="fa-solid fa-phone me-2"></i> Contatar
                             </a>
