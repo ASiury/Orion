@@ -57,3 +57,41 @@
 .route-text { font-weight: 600; color: #475569; font-size: 0.95rem; }
 
 .brand-spacing { letter-spacing: 1px; }
+
+/* Estilos para Select personalizado */
+.custom-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #334155;
+}
+
+.custom-select:hover {
+    background-color: #f0f4f8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.custom-select:focus {
+    background-color: #ffffff;
+    border-color: #0d6efd !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+    outline: none;
+}
+
+.custom-select option {
+    padding: 8px;
+    background-color: #ffffff;
+    color: #334155;
+}
+
+.custom-select option:checked {
+    background: linear-gradient(#0d6efd, #0d6efd);
+    background-color: #0d6efd !important;
+    color: white;
+}
