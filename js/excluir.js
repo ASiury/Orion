@@ -1,16 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const modalExcluir = document.getElementById('modalExcluir');
-    const itemExcluirNome = document.getElementById('itemExcluirNome');
+const modalExcluirEl = document.getElementById('modalExcluir');
+const senhaInput = document.getElementById('senhaExclusao');
+const respEl = document.getElementById('resp');
 
-    if (modalExcluir && itemExcluirNome) {
-        modalExcluir.addEventListener('show.bs.modal', function (event) {
-            const button = event.relatedTarget; // Botão que acionou o modal
-            const row = button.closest('tr');   // Busca a linha (tr) mais próxima do botão
-            
-            if (row) {
-                const itemName = row.querySelector('td').textContent.trim(); // Pega o texto da primeira coluna
-                itemExcluirNome.textContent = itemName; // Atualiza o texto no modal
-            }
-        });
+function resetModalExcluir() {
+    senhaInput.value = '';
+    respEl.innerText = ' ';
+    respEl.style.color = '';
+}
+
+if (modalExcluirEl) {
+    modalExcluirEl.addEventListener('hidden.bs.modal', resetModalExcluir);
+}
+
+function exclusao(){
+    const senhaExcluir = senhaInput.value;
+    const senhaProgramada = 'senha123';
+    const modalInstance = bootstrap.Modal.getInstance(modalExcluirEl) || new bootstrap.Modal(modalExcluirEl);
+
+    if (senhaExcluir === senhaProgramada) {
+        modalInstance.hide();  
+        alert('Exclusão realizada com sucesso!');     
+    } else {
+        respEl.innerText = 'Senha incorreta!';
+        respEl.style.color = 'red';
     }
-});
+}

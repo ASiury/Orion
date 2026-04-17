@@ -364,7 +364,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modalExcluir" data-delete-password="orion123" tabindex="-1" aria-labelledby="excluirLabel" aria-hidden="true">
+        <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="excluirLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
                     <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
@@ -376,14 +376,13 @@
                     <div class="modal-body p-4">
                         <p class="mb-4">Tem certeza que deseja excluir este item? Esta ação não pode ser desfeita.</p>
                         <div class="mb-4">
-                            <p class="text-muted small mb-2">Item selecionado: <span class="fw-semibold" id="itemExcluirNome">este item</span></p>
-                            <label for="senhaExclusao" class="form-label fw-semibold kpi-title">SENHA DE CONFIRMAÇÃO</label>
-                            <input type="password" class="form-control bg-light border-0 py-2" id="senhaExclusao" placeholder="Digite a senha para excluir" autocomplete="current-password" required>
-                            <div class="invalid-feedback">Senha incorreta. Tente novamente.</div>
+                            <label class="form-label fw-semibold kpi-title">SENHA DE CONFIRMAÇÃO</label>
+                            <input type="password" class="form-control bg-light border-0 py-2" id="senhaExclusao" placeholder="Digite a senha para excluir">
+                            <span id="resp"></span>
                         </div>
                         <div class="d-flex justify-content-end gap-2">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
-                            <button type="button" class="btn btn-danger px-4" id="confirmarExclusao">Excluir</button>
+                            <button type="button" onclick="exclusao()" class="btn btn-danger px-4" id="confirmarExclusao">Excluir</button>
                         </div>
                     </div>
                 </div>
