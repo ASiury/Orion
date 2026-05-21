@@ -1,5 +1,5 @@
 const modalExcluirEl = document.getElementById('modalExcluir');
-const senhaInput = document.getElementById('senhaExclusao');
+const senhaI = document.getElementById('senhaExclusao');
 const respEl = document.getElementById('resp');
 
 function resetModalExcluir() {
@@ -13,7 +13,7 @@ if (modalExcluirEl) {
 }
 
 function exclusao(){
-    const senhaExcluir = senhaInput.value;
+    const senhaExcluir = senhaI.value;
     const senhaProgramada = 'senha123';
     const modalInstance = bootstrap.Modal.getInstance(modalExcluirEl) || new bootstrap.Modal(modalExcluirEl);
 

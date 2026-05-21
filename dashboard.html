@@ -48,8 +48,7 @@
 
     <main class="container-fluid px-4 pb-5 flex-grow-1">
         
-        <div class="row g-4 mb-4">
-            
+        <div class="row g-4 mb-4">            
             <div class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
@@ -63,21 +62,21 @@
                 </div>
             </div>
 
-            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
+            <div  class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div class="kpi-title text-muted-custom">Ocupação Média</div>
-                        <div class="p-2 bg-primary-subtle rounded-3"><i class="fa-solid fa-box-open text-primary"></i></div>
+                        <span class="kpi-title text-muted-custom">Ocupação Média</span>
+                        <span class="p-2 bg-primary-subtle rounded-3"><i class="fa-solid fa-box-open text-primary"></i></span>
                     </div>
-                    <div class="kpi-value mb-3">76%</div>
-                    <div class="progress progress-custom">
+                    <span class="kpi-value mb-3">76%</span>
+                    <span class="progress progress-custom">
                         <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    </span>
                 </div>
             </div>
 
             <div class="col-12 col-lg-6 d-flex flex-column gap-4">
-                <div class="card p-4 h-100 kpi-card">
+                <div  class="card p-4 h-100 kpi-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="kpi-title text-muted-custom">Rotas ativas</div>
                         <div class="p-2 bg-info-subtle rounded-3"><i class="fa-solid fa-route text-info"></i></div>
@@ -89,7 +88,7 @@
 
             <div class="col-12 col-lg-6 d-flex flex-column gap-4">
                 <div class="card p-4 h-100 kpi-card">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="d-flex justify-content-between align-items-start mb-3" >
                         <div class="kpi-title text-muted-custom">Alertas</div>
                         <div class="p-2 bg-danger-subtle rounded-3"><i class="fa-solid fa-triangle-exclamation text-danger"></i></div>
                     </div>
@@ -97,21 +96,9 @@
                     <div class="text-muted-custom mt-2" style="font-size: 0.85rem;">Requerem atenção</div>
                 </div>
             </div>
-
         </div>
 
-        <div class="row g-4">
-            
-            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
-                <div class="card p-4">
-                    <h5 class="text-dark mb-4 fw-semibold">Custo por Km <span class="text-muted fs-6 fw-normal">(Histórico vs Atual)</span></h5>
-                    <div style="height: 200px;">
-                        <canvas id="costChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 d-flex flex-column gap-4">
+        <div class="row g-4">          
                 <div class="card p-4 flex-grow-1">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="text-dark fw-semibold mb-0">Próximas Rotas Críticas</h5>
@@ -141,8 +128,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-           </div>         
+                </div>        
         </div>
     </main>
 
