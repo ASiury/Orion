@@ -55,30 +55,30 @@
                     <div class="row g-5">
                         <div class="col-12 col-md-7">
                             <div class="form-floating mb-3 shadow-sm rounded">
-                                <input type="text" class="form-control" id="origemCarga" placeholder="Origem" required>
+                                <input type="text" class="form-control" id="origemCarga" placeholder="Origem" value="Rio Branco - AC" required>
                                 <label for="origemCarga" class="text-muted">Origem</label>
                             </div>
                             <div class="form-floating mb-3 shadow-sm rounded">
-                                <input type="text" class="form-control" id="destinoCarga" placeholder="Destino" required>
+                                <input type="text" class="form-control" id="destinoCarga" placeholder="Destino" value="Porto Alegre - RS" required>
                                 <label for="destinoCarga" class="text-muted">Destino</label>
                             </div>
                             <div class="row g-3 mb-3">                                
                                 <div class="col-12">
                                     <div class="form-floating shadow-sm rounded">
                                         <select class="form-select" id="tipoCarga" aria-label="Natureza do produto">
-                                            <option value="Perecível" selected="">Perecível</option>
-                                            <option value="Consumo durável">Consumo durável</option>
+                                            <option value="Perecível">Perecível</option>
+                                            <option value="Consumo durável" selected="">Consumo durável</option>
                                         </select>
                                         <label for="tipoCarga" class="text-muted">Natureza do produto</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3 shadow-sm rounded">
-                                <input type="number" class="form-control" id="pesoCarga" placeholder="Peso total (kg)" required>
+                                <input type="number" class="form-control" id="pesoCarga" placeholder="Peso total (kg)" value="18500" required>
                                 <label for="pesoCarga" class="text-muted">Peso total (kg)</label>
                             </div>
                             <div class="form-floating mb-3 shadow-sm rounded">
-                                <input type="datetime-local" class="form-control" id="dataCarga" placeholder="Data partida" required>
+                                <input type="datetime-local" class="form-control" id="dataCarga" placeholder="Data partida" value="2026-06-15T08:00" required>
                                 <label for="dataCarga" class="text-muted">Data de saída</label>
                             </div>
                         </div>
@@ -86,9 +86,9 @@
                         <div class="col-12 col-md-5">
                             <div class="form-floating mb-4 shadow-sm rounded">
                                 <select class="form-select" id="Prioridade" aria-label="Prioridade">
-                                    <option value="Baixa" selected="">Baixa</option>
+                                    <option value="Baixa">Baixa</option>
                                     <option value="Média">Média</option>
-                                    <option value="Alta">Alta</option>
+                                    <option value="Alta" selected="">Alta</option>
                                 </select>
                                 <label for="Prioridade" class="text-muted">Prioridade</label>
                             </div>
@@ -136,41 +136,41 @@
             <div class="row g-4">
 
                 <!-- Card 1: Parâmetros da Operação -->
-                <div class="col-12 col-md-6 d-none" id="panelParametros">
+                <div class="col-12 col-md-6">
                     <div class="card h-100 bg-white border-0 shadow-sm p-4 rounded-4" style="border-left: 5px solid #1e4f80 !important;">
                         <h5 class="fw-bold text-dark mb-4" style="color: #1e4f80 !important;">Parâmetros da operação</h5>
 
                         <div class="d-flex flex-column gap-3">
                             <div class="bg-light p-3 rounded-3 border-start border-secondary border-3">
                                 <small class="text-muted d-block text-uppercase font-monospace" style="font-size: 0.75rem;">Origem</small>
-                                <span class="fw-semibold text-dark" data-plan-param="origem">-</span>
+                                <span class="fw-semibold text-dark" data-plan-param="origem">Rio Branco - AC</span>
                             </div>
 
                             <div class="bg-light p-3 rounded-3 border-start border-secondary border-3">
                                 <small class="text-muted d-block text-uppercase font-monospace" style="font-size: 0.75rem;">Destino</small>
-                                <span class="fw-semibold text-dark" data-plan-param="destino">-</span>
+                                <span class="fw-semibold text-dark" data-plan-param="destino">Porto Alegre - RS</span>
                             </div>
 
                             <div class="bg-light p-3 rounded-3 border-start border-secondary border-3">
                                 <small class="text-muted d-block text-uppercase font-monospace" style="font-size: 0.75rem;">Peso total</small>
-                                <span class="fw-semibold text-dark" data-plan-param="peso">-</span>
+                                <span class="fw-semibold text-dark" data-plan-param="peso">18.500 kg</span>
                             </div>
 
                             <div class="bg-light p-3 rounded-3 border-start border-secondary border-3">
                                 <small class="text-muted d-block text-uppercase font-monospace" style="font-size: 0.75rem;">Restrições</small>
-                                <span class="fw-semibold text-dark" data-plan-param="restricoes">-</span>
+                                <span class="fw-semibold text-dark" data-plan-param="restricoes">jornada e paradas</span>
                             </div>
 
                             <div class="bg-light p-3 rounded-3 border-start border-secondary border-3">
                                 <small class="text-muted d-block text-uppercase font-monospace" style="font-size: 0.75rem;">Critério</small>
-                                <span class="fw-semibold text-dark" data-plan-param="criterio">-</span>
+                                <span class="fw-semibold text-dark" data-plan-param="criterio">menor custo operacional</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2: Resultado Sugerido -->
-                <div class="col-12 col-md-6 d-none" id="panelResultado">
+                <div class="col-12 col-md-6">
                     <div class="card h-100 bg-white border-0 shadow-sm p-4 rounded-4" style="border-left: 5px solid #28a745 !important;">
                         <h5 class="fw-bold text-dark mb-4" style="color: #1e4f80 !important;">Resultado sugerido</h5>
 
@@ -179,23 +179,23 @@
                                 <tbody>
                                     <tr class="border-bottom">
                                         <td class="text-muted py-3 ps-0">Distância estimada</td>
-                                        <td class="text-end fw-bold text-muted py-3 pe-0 fs-6" data-plan-result="distancia">Em breve...</td>
+                                        <td class="text-end fw-bold text-dark py-3 pe-0 fs-6" data-plan-result="distancia">3.870 km</td>
                                     </tr>
                                     <tr class="border-bottom">
                                         <td class="text-muted py-3 ps-0">Tempo previsto</td>
-                                        <td class="text-end fw-bold text-muted py-3 pe-0 fs-6" data-plan-result="tempo">Em breve...</td>
+                                        <td class="text-end fw-bold text-dark py-3 pe-0 fs-6" data-plan-result="tempo">62h</td>
                                     </tr>
                                     <tr class="border-bottom">
                                         <td class="text-muted py-3 ps-0">Custo estimado</td>
-                                        <td class="text-end fw-bold text-muted py-3 pe-0 fs-6" data-plan-result="custo">Em breve...</td>
+                                        <td class="text-end fw-bold text-dark py-3 pe-0 fs-6" data-plan-result="custo">R$ 31.450</td>
                                     </tr>
                                     <tr class="table-success rounded-3">
                                         <td class="text-success fw-semibold py-3 ps-3 rounded-start-3">Economia prevista</td>
-                                        <td class="text-end fw-bold text-success py-3 pe-3 rounded-end-3 fs-6" data-plan-result="economia">Em breve...</td>
+                                        <td class="text-end fw-bold text-success py-3 pe-3 rounded-end-3 fs-6" data-plan-result="economia">R$ 4.800</td>
                                     </tr>
                                     <tr class="border-bottom">
                                         <td class="text-muted py-3 ps-0">Ocupação do caminhão</td>
-                                        <td class="text-end fw-bold text-muted py-3 pe-0 fs-6" data-plan-result="ocupacao">Em breve...</td>
+                                        <td class="text-end fw-bold text-dark py-3 pe-0 fs-6" data-plan-result="ocupacao">92%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -218,8 +218,8 @@
 
             </div>
         </div>
-        <a href="planejamentoPreenchido.html" class="btn btn-link d-block mt-4 text-center">
-            <i class="fa-solid fa-eye me-2"></i>Ver exemplo preenchido
+        <a href="planeja.html" class="btn btn-link d-block mt-4 text-center">
+            <i class="fa-solid fa-eye me-2"></i>Voltar para planejamento vazio
         </a>
     </main>
 

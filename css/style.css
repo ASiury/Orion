@@ -53,3 +53,18 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
+
+.login-panel {
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.login-panel .card-body {
+    min-height: 100%;
+}
+
+@media (max-width: 575.98px) {
+    .login-panel {
+        border-radius: 1rem;
+    }
+}

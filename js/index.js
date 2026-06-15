@@ -19,15 +19,19 @@ function validarCPF(cpf) {
     return true;
 }
 
-document.getElementById('cpf').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/\D/g, '');
-    value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-    e.target.value = value;
-});
+const inputCpf = document.getElementById('cpf');
+if (inputCpf) {
+    inputCpf.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        e.target.value = value;
+    });
+}
 
 (function () {
     'use strict'
     const form = document.querySelector('.needs-validation');
+    if (!form) return;
     
     form.addEventListener('submit', function (event) {
         const cpfInput = document.getElementById('cpf');
@@ -51,6 +55,7 @@ document.getElementById('cpf').addEventListener('input', function (e) {
 (function () {
     'use strict'
     const form = document.querySelector('.needs-validation');
+    if (!form) return;
     
     form.addEventListener('submit', function (event) {
         event.preventDefault(); 
@@ -116,3 +121,24 @@ document.getElementById('cpf').addEventListener('input', function (e) {
 
     }, false)
 })()
+
+document.addEventListener('keydown', function(e) {
+    const focusableSelectors = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusableElements = Array.from(document.querySelectorAll(focusableSelectors)).filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
+    const currentIndex = focusableElements.indexOf(document.activeElement);
+
+    if (currentIndex !== -1) {
+        const isInput = document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'SELECT';
+        const isSubmitOrButton = ['submit', 'button', 'reset'].includes(document.activeElement.type);
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || (e.key === 'Enter' && isInput && !isSubmitOrButton)) {
+            e.preventDefault();
+            const nextIndex = (currentIndex + 1) % focusableElements.length;
+            focusableElements[nextIndex].focus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = (currentIndex - 1 + focusableElements.length) % focusableElements.length;
+            focusableElements[prevIndex].focus();
+        }
+    }
+});

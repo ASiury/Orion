@@ -57,8 +57,9 @@
                         <h6 class="text-muted-custom fw-bold mb-3">FILTROS AVANÇADOS</h6>
                         <div class="row g-3">
                             <div class="col-12 col-md-3">
-                                <select class="form-select custom-select shadow-sm border-secondary-subtle">
+                                <select class="form-select custom-select shadow-sm border-secondary-subtle" id="filtroStatus">
                                     <option selected>Status</option>
+                                    <option value="0">Planejada</option>
                                     <option value="1">Em progresso</option>
                                     <option value="2">Atrasada</option>
                                     <option value="3">Cancelada</option>
@@ -95,24 +96,11 @@
                                         <th>Motorista</th>
                                         <th>Veículo</th>
                                         <th>Custo Previsto</th>
+                                        <th>Economia Prevista</th>
                                         <th class="text-center">Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="id-rota" class="id-text ps-4">A-332</td>
-                                        <td id="status" class="text-warning">Em progresso</td>
-                                        <td id="sai" class="text-muted">12/02/2026 09:45</td>
-                                        <td id="chega" class="text-muted">Hoje 14:30</td>
-                                        <td id="origem" class="text-muted">São Paulo</td>
-                                        <td id="destino" class="text-muted">Rio de Janeiro</td>
-                                        <td id="id-motorista" class="text-muted">ID</td>
-                                        <td id="id-veiculo" class="text-muted">G-34</td>
-                                        <td id="custo" class="text-muted">R$ 5.000</td>
-                                        <td class="text-center">
-                                            <a href="rotasctr.html" class="btn btn-success btn-sm px-4 fw-semibold shadow-sm action-btn">Verificar</a>
-                                        </td>
-                                </tbody>
+                                <tbody data-table-body="rotas"></tbody>
                             </table>
                         </div>
                     </div>
@@ -140,7 +128,10 @@
             <i class="fa-solid fa-truck-fast fs-3 me-2"></i>
             <span class="fs-5 fw-bold brand-spacing" style="letter-spacing: 1px;">ORION</span>
         </div>
-        <p class="mb-0 small">&copy; 2026 ORION Logística. Protótipo de Sistema.</p>
+        <p class="mb-2 small">&copy; 2026 ORION Logística. Protótipo de Sistema.</p>
+        <button type="button" class="btn btn-link text-white-50 p-0 small text-decoration-none" onclick="if(typeof resetDefaultData === 'function') resetDefaultData()">
+            <i class="fa-solid fa-rotate-left me-1"></i>Restaurar dados iniciais
+        </button>
     </div>
     </footer>
 

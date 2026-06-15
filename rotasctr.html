@@ -55,24 +55,18 @@
 
                 <div class="card-body p-4">
                     <div class="row g-4 h-100">          
-                        <div class="col-12 col-lg-6">
-                            <div class="map-view rounded-3 overflow-hidden position-relative w-100 h-100 min-vh-50 border border-secondary-subtle shadow-sm" style="background-color: #f4f5f7; min-height: 400px;">
-                                <div class="position-absolute bottom-0 start-0 p-2 px-3 fw-medium text-dark bg-white rounded-end-3 shadow-sm mb-4">São Paulo, SP</div>
-                                    <figure class=""> 
-                                        <img src="img/SPRJ.jpg" class="img-fluid" alt="sp_rj">
-                                    </figure>
-                                <div class="position-absolute bottom-0 end-0 p-2 px-3 fw-medium text-dark bg-white rounded-start-3 shadow-sm mb-4">Rio de Janeiro, RJ</div>
-                            </div>
-                        </div>
 
-                        <div class="col-12 col-lg-3 d-flex flex-column">
+                        <div class="col-12 col-lg-4 d-flex flex-column">
                             <h6 class="text-muted-custom fw-bold mb-4">DETALHES</h6>
                             
                             <div class="mb-3">
                                 <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">ID viagem</span>
-                                <h4 id="meuBotao" class="fw-bold text-dark mb-2">A-332</h4>
+                                <h4 id="meuBotao" class="fw-bold text-dark mb-1" data-route-detail="id">-</h4>
+                                <div class="small text-muted mb-2">
+                                    Status: <span class="fw-semibold text-dark" data-route-detail="status">-</span>
+                                </div>
                                 <div class="progress" style="height: 6px; border-radius: 6px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary" data-route-detail="progresso" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
 
@@ -80,43 +74,141 @@
 
                             <div class="container">
                                 <span class="text-muted mb-1" style="font-size: 0.9rem;">Origem</span>
-                                <h6 class="fw-bold text-dark">São Paulo, SP</h6>
+                                <h6 class="fw-bold text-dark" data-route-detail="origem">-</h6>
 
                                 <span class="text-muted mb-1" style="font-size: 0.9rem;">Destino</span>
-                                <h6 class="fw-bold text-dark">Rio de Janeiro, RJ</h6>
+                                <h6 class="fw-bold text-dark" data-route-detail="destino">-</h6>
                             </div>
 
                             <hr class="text-muted opacity-25 ">
 
                             <div class="mb-3">
                                 <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">ID motorista</span>
-                                <h6 id="idMotorista" class="fw-bold text-dark"></h6>
+                                <h6 id="idMotorista" class="fw-bold text-dark" data-route-detail="motorista">-</h6>
+                                <button id="btnContatarMotorista" class="btn btn-success w-100 py-2 fs-6 shadow-sm text-decoration-none mb-3">
+                                <i class="fa-solid fa-phone me-2"></i> Contatar
+                                </button>
                             </div>
 
                             <div class="mb-3">
                                 <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">ID veículo</span>
-                                <h6 class="fw-bold text-dark">G-12</h6>
+                                <h6 class="fw-bold text-dark" data-route-detail="veiculo">-</h6>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Saída</span>
+                                <h6 class="fw-bold text-dark" data-route-detail="saida">-</h6>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Chegada estimada</span>
+                                <h6 class="fw-bold text-dark" data-route-detail="chegada">-</h6>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Custo previsto</span>
+                                <h6 class="fw-bold text-dark" data-route-detail="custo">-</h6>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Economia prevista</span>
+                                <h6 class="fw-bold text-dark" data-route-detail="economia">-</h6>
                             </div>
 
                             <div class="mb-3">
                                 <span class="text-muted d-block mb-1" style="font-size: 0.9rem;">Tempo restante</span>
-                                <h6 class="fw-bold text-dark">59 minutos</h6>
+                                <h6 class="fw-bold text-dark" data-route-detail="tempo">-</h6>
                             </div>
 
                             <hr class="text-muted opacity-25 my-3">
 
-                            <button class="btn btn-primary w-100 py-2 mt-auto fs-6 shadow-sm mb-4">
+                            <button class="btn btn-primary w-100 py-2 mt-auto fs-6 shadow-sm mb-3" data-bs-toggle="modal" data-bs-target="#modalEditRota">
                                 <i class="fa-solid fa-pen me-2"></i> Editar
                             </button>
-                            <a href="tel:+551100000000" class="btn btn-success w-100 py-2 mt-auto fs-6 shadow-sm text-decoration-none">
-                                <i class="fa-solid fa-phone me-2"></i> Contatar
-                            </a>
+                            
+                            <button id="btnCancelarRota" class="btn btn-outline-danger w-100 py-2 fs-6 shadow-sm">
+                                <i class="fa-solid fa-ban me-2"></i> Cancelar Rota
+                            </button>
+                        </div>
+
+                        <!-- Mapa Simulando Trajeto -->
+                        <div class="col-12 col-lg-8 d-flex flex-column">
+                            <h6 class="text-muted-custom fw-bold mb-4">TRAJETO DA VIAGEM</h6>
+                            <div class="card border-0 shadow-sm flex-grow-1 overflow-hidden position-relative" style="border-radius: 12px; min-height: 450px; background-color: #e9ecef;">
+                                
+                                <!-- Imagem Aleatória de Mapa -->
+                                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mapa do Trajeto" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-75">
+                                
+                                <!-- Overlay com Informações da Rota -->
+                                <div class="position-absolute top-0 start-0 p-3 p-md-4 z-1">
+                                    <div class="bg-white p-3 rounded-4 shadow-sm border border-light" style="max-width: 320px;">
+                                        <div class="d-flex align-items-start gap-3 mb-2">
+                                            <div class="mt-1"><i class="fa-regular fa-circle-dot text-primary"></i></div>
+                                            <div>
+                                                <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.7rem;">Partida</small>
+                                                <span class="fw-semibold text-dark" data-route-map="origem">Carregando...</span>
+                                            </div>
+                                        </div>
+                                        <div class="ms-2 ps-3 border-start border-2 border-dashed border-secondary opacity-50 mb-2" style="height: 20px;"></div>
+                                        <div class="d-flex align-items-start gap-3">
+                                            <div class="mt-1"><i class="fa-solid fa-location-dot text-danger"></i></div>
+                                            <div>
+                                                <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.7rem;">Destino</small>
+                                                <span class="fw-semibold text-dark" data-route-map="destino">Carregando...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Marcador de Caminhão (Simulação de GPS) -->
+                                <div class="position-absolute top-50 start-50 translate-middle z-1 text-center">
+                                    <span class="badge bg-dark mb-2 shadow text-wrap px-3 py-2 rounded-pill">Última atualização: Agora</span>
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg border border-3 border-white mx-auto" style="width: 54px; height: 54px;">
+                                        <i class="fa-solid fa-truck-fast fs-5"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
         </main>
+        <div class="modal fade" id="modalEditRota" tabindex="-1" aria-labelledby="modalEditRotaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content border-0 shadow">
+                    <div class="modal-header bg-primary text-white border-0">
+                        <h5 class="modal-title fw-bold" id="modalEditRotaLabel">Editar Rota</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <form id="formEditRota">
+                            <div class="mb-3">
+                                <label for="editStatus" class="form-label text-muted fw-semibold">Status</label>
+                                <select class="form-select" id="editStatus">
+                                    <option value="Em progresso">Em progresso</option>
+                                    <option value="Atrasada">Atrasada</option>
+                                    <option value="Finalizada">Finalizada</option>
+                                    <option value="Cancelada">Cancelada</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMotorista" class="form-label text-muted fw-semibold">ID Motorista</label>
+                                <input type="text" class="form-control" id="editMotorista">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editVeiculo" class="form-label text-muted fw-semibold">ID Veículo</label>
+                                <input type="text" class="form-control" id="editVeiculo">
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary px-4">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <footer class="bg-dark text-white py-4 mt-auto">
     <div class="container text-center text-white-50">
@@ -124,12 +216,15 @@
             <i class="fa-solid fa-truck-fast fs-3 me-2"></i>
             <span class="fs-5 fw-bold brand-spacing" style="letter-spacing: 1px;">ORION</span>
         </div>
-        <p class="mb-0 small">&copy; 2026 ORION Logística. Protótipo de Sistema.</p>
+        <p class="mb-2 small">&copy; 2026 ORION Logística. Protótipo de Sistema.</p>
+        <button type="button" class="btn btn-link text-white-50 p-0 small text-decoration-none" onclick="if(typeof resetDefaultData === 'function') resetDefaultData()">
+            <i class="fa-solid fa-rotate-left me-1"></i>Restaurar dados iniciais
+        </button>
     </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/dscript.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/table.js"></script>
+    <script src="js/rotasctr.js"></script>
 </body>
 </html>
