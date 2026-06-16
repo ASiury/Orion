@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const motoristaId = document.getElementById('Motorista').value;
                 const veiculoId = document.getElementById('Veiculo').value;
                 const dataSaida = document.getElementById('dataCarga').value;
+                const prazoCarga = document.getElementById('prazoCarga').value;
 
                 if(document.querySelector('[data-plan-param="origem"]')) {
                     document.querySelector('[data-plan-param="origem"]').innerText = origem || "Não informado";
@@ -64,6 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Formatando a data
                 let dataFormatada = dataSaida;
                 let dataChegadaFormatada = "Pendente";
+                let prazoFormatado = "Não informado";
+                let statusPrazo = "Pendente";
                 if (dataSaida) {
                     const dateObj = new Date(dataSaida);
                     dataFormatada = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()} ${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
@@ -71,6 +74,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Calculando data de chegada baseada no tempo estimado
                     const dateChegadaObj = new Date(dateObj.getTime() + tempoH * 60 * 60 * 1000);
                     dataChegadaFormatada = `${dateChegadaObj.getDate().toString().padStart(2, '0')}/${(dateChegadaObj.getMonth() + 1).toString().padStart(2, '0')}/${dateChegadaObj.getFullYear()} ${dateChegadaObj.getHours().toString().padStart(2, '0')}:${dateChegadaObj.getMinutes().toString().padStart(2, '0')}`;
+
+                    if (prazoCarga) {
+                        statusPrazo = dateChegadaObj <= new Date(prazoCarga) ? "Dentro do prazo" : "Risco de atraso";
+                    }
+                }
+                
+                if (prazoCarga) {
+                    const prazoObj = new Date(prazoCarga);
+                    prazoFormatado = `${prazoObj.getDate().toString().padStart(2, '0')}/${(prazoObj.getMonth() + 1).toString().padStart(2, '0')}/${prazoObj.getFullYear()} ${prazoObj.getHours().toString().padStart(2, '0')}:${prazoObj.getMinutes().toString().padStart(2, '0')}`;
+                }
+
+                if (document.querySelector('[data-plan-param="prazoLimite"]')) {
+                    document.querySelector('[data-plan-param="prazoLimite"]').innerText = prazoFormatado;
                 }
 
                 // Guarda temporariamente os dados para caso seja aprovado
@@ -78,6 +94,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     status: "Em progresso",
                     saida: dataFormatada || "Não informada",
                     chegada: dataChegadaFormatada,
+                    prazoLimite: prazoFormatado,
+                    prazoLimiteRaw: prazoCarga,
+                    prazoBloqueado: true,
+                    statusPrazo: statusPrazo,
                     origem: origem,
                     destino: destino,
                     motorista: motoristaId,
@@ -142,6 +162,11 @@ function aprovarRota() {
         return;
     }
 
+    if (!tempRotaData.prazoLimiteRaw || tempRotaData.prazoLimite === "Não informado") {
+        alert("Informe o prazo limite de entrega antes de aprovar a rota.");
+        return;
+    }
+
     const rotas = getStoredItems("rotas");
     
     // Identificador em formato compatível com table.js
@@ -151,6 +176,7 @@ function aprovarRota() {
     }
     
     tempRotaData.id = newId;
+    tempRotaData.aprovadaEm = new Date().toISOString();
     rotas.push(tempRotaData); // Adiciona na memória local
     
     setStoredItems("rotas", rotas);

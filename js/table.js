@@ -2,7 +2,8 @@ const ORION_TABLES = {
     storageKeys: {
         motoristas: "funcionarios",
         veiculos: "veiculos",
-        rotas: "rotas"
+        rotas: "rotas",
+        entregas: "entregas"
     },
     defaults: {
         motoristas: [
@@ -120,6 +121,7 @@ const ORION_TABLES = {
                 status: "Em progresso",
                 saida: "12/02/2026 09:45",
                 chegada: "Hoje 14:30",
+                prazoLimite: "13/02/2026 18:00",
                 origem: "Sao Paulo",
                 destino: "Rio de Janeiro",
                 motorista: "MOT-001",
@@ -133,6 +135,7 @@ const ORION_TABLES = {
                 status: "Atrasada",
                 saida: "15/06/2026 07:10",
                 chegada: "Hoje 14:30",
+                prazoLimite: "15/06/2026 12:00",
                 origem: "Porto Velho",
                 destino: "Curitiba",
                 motorista: "MOT-002",
@@ -147,6 +150,7 @@ const ORION_TABLES = {
                 status: "Finalizada",
                 saida: "14/06/2026 08:00",
                 chegada: "14/06/2026 17:20",
+                prazoLimite: "14/06/2026 18:00",
                 origem: "Campinas",
                 destino: "Belo Horizonte",
                 motorista: "MOT-001",
@@ -154,6 +158,41 @@ const ORION_TABLES = {
                 custo: "R$ 4.350",
                 economia: "R$ 652,50",
                 url: "rotasctr.html"
+            }
+        ],
+        entregas: [
+            {
+                id: "ENT-001",
+                origem: "Sao Paulo",
+                destino: "Rio de Janeiro",
+                peso: "1200",
+                volume: "18",
+                prazo: "13/02/2026 18:00",
+                prioridade: "Alta",
+                status: "Planejada",
+                observacoes: "Carga perecivel"
+            },
+            {
+                id: "ENT-002",
+                origem: "Porto Velho",
+                destino: "Curitiba",
+                peso: "3400",
+                volume: "42",
+                prazo: "15/06/2026 12:00",
+                prioridade: "Media",
+                status: "Em rota",
+                observacoes: "Conferir parada de descanso"
+            },
+            {
+                id: "ENT-003",
+                origem: "Campinas",
+                destino: "Belo Horizonte",
+                peso: "860",
+                volume: "9",
+                prazo: "14/06/2026 18:00",
+                prioridade: "Baixa",
+                status: "Concluida",
+                observacoes: "Entrega finalizada"
             }
         ]
     }
@@ -206,6 +245,7 @@ function renderTables() {
     renderVeiculos();
     renderRotas();
     renderRotasCriticas();
+    renderEntregas();
 }
 
 function renderMotoristas() {
@@ -297,6 +337,7 @@ function renderRotas() {
             <td class="id-text ps-4">${escapeHtml(rota.id || "-")}</td>
             <td>${createStatusText(rota.status)}</td>
             <td class="text-muted">${escapeHtml(rota.saida || "-")}</td>
+            <td class="text-muted">${escapeHtml(rota.prazoLimite || "-")}</td>
             <td class="text-muted">${escapeHtml(rota.chegada || "-")}</td>
             <td class="text-muted">${escapeHtml(rota.origem || "-")}</td>
             <td class="text-muted">${escapeHtml(rota.destino || "-")}</td>
@@ -341,6 +382,39 @@ function renderRotasCriticas() {
     `).join("");
 }
 
+function renderEntregas() {
+    const tbody = document.querySelector('[data-table-body="entregas"]');
+    if (!tbody) return;
+
+    const entregas = getStoredItems("entregas");
+
+    if (!entregas.length) {
+        renderEmptyRow(tbody, 9, "Nenhuma entrega cadastrada.");
+        return;
+    }
+
+    tbody.innerHTML = entregas.map((entrega, index) => `
+        <tr data-status="${escapeHtml(entrega.status || "")}">
+            <td class="id-text ps-4">${escapeHtml(entrega.id || "-")}</td>
+            <td>${createStatusBadge(entrega.status || "Criada", "entregas")}</td>
+            <td class="text-muted">${escapeHtml(entrega.origem || "-")}</td>
+            <td class="text-muted">${escapeHtml(entrega.destino || "-")}</td>
+            <td class="text-muted">${escapeHtml(entrega.peso || "-")} kg</td>
+            <td class="text-muted">${escapeHtml(entrega.volume || "-")} m³</td>
+            <td class="text-muted">${escapeHtml(entrega.prazo || "-")}</td>
+            <td class="text-muted">${escapeHtml(entrega.prioridade || "-")}</td>
+            <td class="text-end">
+                <button type="button" class="btn btn-sm btn-light text-primary me-1" title="Editar" onclick="openEntregaModal(${index})">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-light text-danger" title="Excluir" onclick="deleteEntrega(${index})">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `).join("");
+}
+
 function setupFilters() {
     if (document.querySelector('[data-table-body="veiculos"]')) {
         setupTextFilter("myInput", "myTable");
@@ -349,7 +423,8 @@ function setupFilters() {
     }
 
     const routeTable = document.querySelector('[data-table-body="rotas"]');
-    if (!routeTable) return;
+    const entregaTable = document.querySelector('[data-table-body="entregas"]');
+    if (!routeTable && !entregaTable) return;
 
     const input = document.getElementById("myInput");
     const statusSelect = document.getElementById("filtroStatus");
@@ -440,7 +515,7 @@ function saveMotorista(event) {
         dataNascimento: document.getElementById("DataNascimento")?.value.trim(),
         telefone: document.getElementById("telefone")?.value.trim(),
         email: document.getElementById("email")?.value.trim() || "",
-        status: "Ativo"
+        status: document.getElementById("status")?.value || "Ativo"
     });
 
     setStoredItems("motoristas", motoristas);
@@ -468,7 +543,7 @@ function saveVeiculo(event) {
         ano: document.getElementById("ano")?.value.trim(),
         km: document.getElementById("km")?.value.trim(),
         capacidade: document.getElementById("Capacidade")?.selectedOptions[0]?.textContent.trim(),
-        status: "Disponivel",
+        status: document.getElementById("statusVeiculo")?.value || "Disponivel",
         ultimaManutencao: "Nao registrada"
     });
 
@@ -499,7 +574,8 @@ function saveEditMotorista(event) {
             estadoCivil: document.getElementById("edit_EstadoCivil")?.value.trim(),
             dataNascimento: document.getElementById("edit_DataNascimento")?.value.trim(),
             telefone: document.getElementById("edit_telefone")?.value.trim(),
-            email: document.getElementById("edit_email")?.value.trim() || ""
+            email: document.getElementById("edit_email")?.value.trim() || "",
+            status: document.getElementById("edit_status")?.value || motoristas[index].status || "Ativo"
         };
         
         const pwd = document.getElementById("edit_pwd")?.value.trim();
@@ -532,7 +608,8 @@ function saveEditVeiculo(event) {
             placa: document.getElementById("edit_placa")?.value.trim(),
             ano: document.getElementById("edit_ano")?.value.trim(),
             km: document.getElementById("edit_km")?.value.trim(),
-            capacidade: document.getElementById("edit_Capacidade")?.selectedOptions[0]?.textContent.trim()
+            capacidade: document.getElementById("edit_Capacidade")?.selectedOptions[0]?.textContent.trim(),
+            status: document.getElementById("edit_statusVeiculo")?.value || veiculos[index].status || "Disponivel"
         };
         setStoredItems("veiculos", veiculos);
         renderVeiculos();
@@ -585,6 +662,12 @@ function openEditModal(tableName, index) {
                 if (opt.textContent.trim() === item.estadoCivil || opt.value === item.estadoCivil) opt.selected = true;
             });
         }
+        const statusEl = document.getElementById('edit_status');
+        if (statusEl) {
+            Array.from(statusEl.options).forEach(opt => {
+                if (opt.value === item.status || opt.textContent.trim() === item.status) opt.selected = true;
+            });
+        }
     } else if (tableName === 'veiculos') {
         modalId = 'modalEditVeiculo';
         const modeloEl = document.getElementById('edit_modelo');
@@ -592,6 +675,7 @@ function openEditModal(tableName, index) {
         const anoEl = document.getElementById('edit_ano');
         const kmEl = document.getElementById('edit_km');
         const capacidadeEl = document.getElementById('edit_Capacidade');
+        const statusVeiculoEl = document.getElementById('edit_statusVeiculo');
 
         if (modeloEl) modeloEl.value = item.modelo || item.name || '';
         if (placaEl) placaEl.value = item.placa || '';
@@ -600,6 +684,11 @@ function openEditModal(tableName, index) {
         if (capacidadeEl) {
             Array.from(capacidadeEl.options).forEach(opt => {
                 if (opt.textContent.trim() === item.capacidade || opt.value === item.capacidade) opt.selected = true;
+            });
+        }
+        if (statusVeiculoEl) {
+            Array.from(statusVeiculoEl.options).forEach(opt => {
+                if (opt.value === item.status || opt.textContent.trim() === item.status) opt.selected = true;
             });
         }
     }
@@ -686,6 +775,13 @@ function createStatusBadge(status = "", type = "rotas") {
             "Atrasada": "bg-danger-subtle text-danger border border-danger-subtle rounded-pill",
             "Cancelada": "bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill",
             "Finalizada": "bg-success-subtle text-success border border-success-subtle rounded-pill"
+        },
+        entregas: {
+            "Criada": "bg-primary-subtle text-primary border border-primary-subtle rounded-pill",
+            "Planejada": "bg-info-subtle text-info border border-info-subtle rounded-pill",
+            "Em rota": "bg-warning-subtle text-warning border border-warning-subtle rounded-pill",
+            "Concluida": "bg-success-subtle text-success border border-success-subtle rounded-pill",
+            "Cancelada": "bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill"
         }
     };
 
