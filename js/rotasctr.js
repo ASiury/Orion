@@ -21,12 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    // Garante que a rota tenha o campo de entregas vinculadas
+    if (!rota.entregas) rota.entregas = [];
+
     const motorista = motoristas.find(m => m.id === rota.motorista);
     const veiculo = veiculos.find(v => v.id === rota.veiculo);
 
     preencherDetalhes(rota, motorista, veiculo);
     configurarFormularioEdicao(rota, rotas);
     configurarBotaoCancelar(rota, rotas, motorista, veiculo);
+    renderEntregasRota(rota);
 });
 
 function preencherDetalhes(rota, motorista, veiculo) {
@@ -160,6 +164,153 @@ function configurarBotaoCancelar(rota, rotas, motorista, veiculo) {
         }
     });
 }
+
+// =============================================
+// Gerenciamento de Entregas vinculadas à rota
+// =============================================
+
+function obterRotaAtual() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const routeId = urlParams.get("id");
+    const rotas = getStoredItems("rotas");
+    let rota = routeId ? rotas.find(r => r.id === routeId) : rotas[0];
+    if (rota && !rota.entregas) rota.entregas = [];
+    return rota;
+}
+
+function salvarRota(rota) {
+    const rotas = getStoredItems("rotas");
+    const index = rotas.findIndex(r => r.id === rota.id);
+    if (index !== -1) {
+        rotas[index] = rota;
+        setStoredItems("rotas", rotas);
+    }
+}
+
+function renderEntregasRota(rota) {
+    const tbody = document.getElementById("tbodyEntregasRota");
+    if (!tbody) return;
+
+    const todasEntregas = getStoredItems("entregas");
+    const idsVinculados = rota.entregas || [];
+    const entregasVinculadas = todasEntregas.filter(e => idsVinculados.includes(e.id));
+
+    if (!entregasVinculadas.length) {
+        tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-4">Nenhuma entrega vinculada.</td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = entregasVinculadas.map(e => `
+        <tr>
+            <td class="ps-3 fw-bold text-dark">${escapeHtml(e.id || "-")}</td>
+            <td>${createStatusBadge(e.status || "Criada", "entregas")}</td>
+            <td class="text-muted">${escapeHtml(e.origem || "-")}</td>
+            <td class="text-muted">${escapeHtml(e.destino || "-")}</td>
+            <td class="text-muted">${escapeHtml(e.peso || "-")} kg</td>
+            <td class="text-muted">${escapeHtml(e.prazo || "-")}</td>
+            <td class="text-muted">${escapeHtml(e.prioridade || "-")}</td>
+            <td class="text-end pe-3">
+                <button type="button" class="btn btn-sm btn-outline-danger" title="Desvincular" onclick="desvincularEntrega('${escapeHtml(e.id)}')">
+                    <i class="fa-solid fa-link-slash"></i>
+                </button>
+            </td>
+        </tr>
+    `).join("");
+}
+
+function abrirModalAdicionarEntrega() {
+    const rota = obterRotaAtual();
+    if (!rota) return;
+
+    const todasEntregas = getStoredItems("entregas");
+    const idsVinculados = rota.entregas || [];
+
+    // Mostra entregas que não estão vinculadas e têm status disponível
+    const entregasDisponiveis = todasEntregas.filter(e =>
+        !idsVinculados.includes(e.id) &&
+        (e.status === "Criada" || e.status === "Planejada")
+    );
+
+    const tbody = document.getElementById("tbodyEntregasDisponiveis");
+    if (tbody) {
+        if (!entregasDisponiveis.length) {
+            tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted py-4">Nenhuma entrega disponível para vincular.</td></tr>`;
+        } else {
+            tbody.innerHTML = entregasDisponiveis.map(e => `
+                <tr>
+                    <td class="ps-3 fw-bold text-dark">${escapeHtml(e.id || "-")}</td>
+                    <td class="text-muted">${escapeHtml(e.origem || "-")}</td>
+                    <td class="text-muted">${escapeHtml(e.destino || "-")}</td>
+                    <td class="text-muted">${escapeHtml(e.peso || "-")} kg</td>
+                    <td class="text-muted">${escapeHtml(e.prazo || "-")}</td>
+                    <td class="text-muted">${escapeHtml(e.prioridade || "-")}</td>
+                    <td class="text-end pe-3">
+                        <button type="button" class="btn btn-sm btn-primary" onclick="vincularEntrega('${escapeHtml(e.id)}')">
+                            <i class="fa-solid fa-link me-1"></i> Vincular
+                        </button>
+                    </td>
+                </tr>
+            `).join("");
+        }
+    }
+
+    const modalEl = document.getElementById("modalAdicionarEntrega");
+    const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    modal.show();
+}
+
+function vincularEntrega(entregaId) {
+    const rota = obterRotaAtual();
+    if (!rota) return;
+
+    if (!rota.entregas) rota.entregas = [];
+    if (rota.entregas.includes(entregaId)) return;
+
+    rota.entregas.push(entregaId);
+    salvarRota(rota);
+
+    // Atualiza o status da entrega para "Em rota"
+    const entregas = getStoredItems("entregas");
+    const idx = entregas.findIndex(e => e.id === entregaId);
+    if (idx !== -1) {
+        entregas[idx].status = "Em rota";
+        setStoredItems("entregas", entregas);
+    }
+
+    renderEntregasRota(rota);
+
+    // Fecha o modal e reabre para atualizar a lista
+    const modalEl = document.getElementById("modalAdicionarEntrega");
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal?.hide();
+
+    // Reabre com lista atualizada após pequeno delay
+    setTimeout(() => abrirModalAdicionarEntrega(), 350);
+}
+
+function desvincularEntrega(entregaId) {
+    if (!confirm("Deseja desvincular esta entrega da rota?")) return;
+
+    const rota = obterRotaAtual();
+    if (!rota) return;
+
+    rota.entregas = (rota.entregas || []).filter(id => id !== entregaId);
+    salvarRota(rota);
+
+    // Reverte o status da entrega para "Planejada"
+    const entregas = getStoredItems("entregas");
+    const idx = entregas.findIndex(e => e.id === entregaId);
+    if (idx !== -1 && entregas[idx].status === "Em rota") {
+        entregas[idx].status = "Planejada";
+        setStoredItems("entregas", entregas);
+    }
+
+    renderEntregasRota(rota);
+}
+
+// =============================================
+// Utilitários
+// =============================================
 
 function atualizarTexto(selector, valor) {
     const elemento = document.querySelector(selector);

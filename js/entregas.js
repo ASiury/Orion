@@ -11,10 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const entregas = getStoredItems("entregas");
-        const editIndex = Number(form.dataset.editIndex);
+        const editIndexRaw = form.dataset.editIndex;
+        const isEditing = editIndexRaw !== "" && editIndexRaw !== undefined;
+        const editIndex = isEditing ? Number(editIndexRaw) : NaN;
         const entrega = coletarDadosEntrega(editIndex, entregas);
 
-        if (!isNaN(editIndex) && entregas[editIndex]) {
+        if (isEditing && !isNaN(editIndex) && entregas[editIndex]) {
             entregas[editIndex] = entrega;
         } else {
             entregas.push(entrega);
@@ -37,7 +39,7 @@ function coletarDadosEntrega(editIndex, entregas) {
     const entregaExistente = !isNaN(editIndex) ? entregas[editIndex] : null;
 
     return {
-        id: entregaExistente?.id || createSequentialId("ENT", entregas.length),
+        id: entregaExistente?.id || gerarNovoIdEntrega(entregas),
         origem: document.getElementById("entregaOrigem")?.value.trim(),
         destino: document.getElementById("entregaDestino")?.value.trim(),
         peso: document.getElementById("entregaPeso")?.value.trim(),
@@ -116,4 +118,15 @@ function converterParaDatetimeLocal(value) {
 
     const [, dia, mes, ano, hora, minuto] = match;
     return `${ano}-${mes}-${dia}T${hora}:${minuto}`;
+}
+
+function gerarNovoIdEntrega(entregas) {
+    let maxNum = 0;
+    entregas.forEach(e => {
+        if (e.id && e.id.startsWith("ENT-")) {
+            const num = parseInt(e.id.replace("ENT-", ""), 10);
+            if (!isNaN(num) && num > maxNum) maxNum = num;
+        }
+    });
+    return `ENT-${String(maxNum + 1).padStart(3, "0")}`;
 }
