@@ -63,23 +63,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Formatando a data
                 let dataFormatada = dataSaida;
+                let dataChegadaFormatada = "Pendente";
                 if (dataSaida) {
                     const dateObj = new Date(dataSaida);
                     dataFormatada = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')}/${dateObj.getFullYear()} ${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`;
+
+                    // Calculando data de chegada baseada no tempo estimado
+                    const dateChegadaObj = new Date(dateObj.getTime() + tempoH * 60 * 60 * 1000);
+                    dataChegadaFormatada = `${dateChegadaObj.getDate().toString().padStart(2, '0')}/${(dateChegadaObj.getMonth() + 1).toString().padStart(2, '0')}/${dateChegadaObj.getFullYear()} ${dateChegadaObj.getHours().toString().padStart(2, '0')}:${dateChegadaObj.getMinutes().toString().padStart(2, '0')}`;
                 }
 
                 // Guarda temporariamente os dados para caso seja aprovado
                 tempRotaData = {
-                    status: "Planejada",
+                    status: "Em progresso",
                     saida: dataFormatada || "Não informada",
-                    chegada: "Pendente",
+                    chegada: dataChegadaFormatada,
                     origem: origem,
                     destino: destino,
                     motorista: motoristaId,
                     veiculo: veiculoId,
                     custo: `R$ ${custo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`,
                     economia: `R$ ${economia.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`,
-                    url: "rotasctr.html"
+                    url: "rotasctr.html",
+                    tempo: `${tempoH}h`
                 };
 
                 if (panelResultado) {

@@ -121,25 +121,18 @@
                             </div>
 
                             <hr class="text-muted opacity-25 my-3">
-
-                            <button class="btn btn-primary w-100 py-2 mt-auto fs-6 shadow-sm mb-3" data-bs-toggle="modal" data-bs-target="#modalEditRota">
-                                <i class="fa-solid fa-pen me-2"></i> Editar
-                            </button>
                             
                             <button id="btnCancelarRota" class="btn btn-outline-danger w-100 py-2 fs-6 shadow-sm">
                                 <i class="fa-solid fa-ban me-2"></i> Cancelar Rota
                             </button>
                         </div>
 
-                        <!-- Mapa Simulando Trajeto -->
                         <div class="col-12 col-lg-8 d-flex flex-column">
                             <h6 class="text-muted-custom fw-bold mb-4">TRAJETO DA VIAGEM</h6>
                             <div class="card border-0 shadow-sm flex-grow-1 overflow-hidden position-relative" style="border-radius: 12px; min-height: 450px; background-color: #e9ecef;">
                                 
-                                <!-- Imagem Aleatória de Mapa -->
-                                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mapa do Trajeto" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-75">
+                                <img alt="Mapa do Trajeto" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 opacity-75">
                                 
-                                <!-- Overlay com Informações da Rota -->
                                 <div class="position-absolute top-0 start-0 p-3 p-md-4 z-1">
                                     <div class="bg-white p-3 rounded-4 shadow-sm border border-light" style="max-width: 320px;">
                                         <div class="d-flex align-items-start gap-3 mb-2">
@@ -159,8 +152,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Marcador de Caminhão (Simulação de GPS) -->
                                 <div class="position-absolute top-50 start-50 translate-middle z-1 text-center">
                                     <span class="badge bg-dark mb-2 shadow text-wrap px-3 py-2 rounded-pill">Última atualização: Agora</span>
                                     <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg border border-3 border-white mx-auto" style="width: 54px; height: 54px;">

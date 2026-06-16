@@ -59,7 +59,7 @@ function preencherDetalhes(rota, motorista, veiculo) {
 
     atualizarTexto(
         '[data-route-detail="tempo"]',
-        calcularTempo(rota.status)
+        calcularTempo(rota.status, rota)
     );
 
     atualizarBarraProgresso(rota.status);
@@ -164,20 +164,23 @@ function atualizarTexto(selector, valor) {
     }
 }
 
-function calcularTempo(status) {
+function calcularTempo(status, rota) {
 
     switch (status) {
         case "Finalizada":
             return "Concluída";
 
         case "Em progresso":
-            return "Em andamento";
+            return rota && rota.tempo ? rota.tempo : "Em andamento";
 
         case "Atrasada":
-            return "Atrasada";
+            return rota && rota.tempo ? rota.tempo + " (Atrasada)" : "Atrasada";
 
         case "Cancelada":
             return "Cancelada";
+
+        case "Planejada":
+            return rota && rota.tempo ? rota.tempo : "Pendente";
 
         default:
             return "Pendente";

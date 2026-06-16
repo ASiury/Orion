@@ -136,56 +136,80 @@
                             <div class="row g-3"> 
                                 <div class="col-md-12">
                                     <label for="name" class="form-label fw-semibold kpi-title">NOME COMPLETO</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="name" placeholder="Ex: João da Silva" name="name" required>
-                                    <div class="invalid-feedback">Por favor, preencha o nome completo.</div>    
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="name" placeholder="Ex: João da Silva" name="name" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o nome completo.</div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="cpf" class="form-label fw-semibold kpi-title">CPF</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="cpf" placeholder="Ex: 000.000.000-00" name="cpf" required>
-                                    <div class="invalid-feedback">Por favor, preencha o CPF.</div>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="cpf" placeholder="Ex: 000.000.000-00" name="cpf" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o CPF.</div>
+                                    </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <label for="CNH" class="form-label fw-semibold kpi-title">CNH</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="CNH" placeholder="Ex: 12345678900" name="CNH">
-                                    <div class="invalid-feedback">Por favor, preencha a CNH.</div> 
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="CNH" placeholder="Ex: 12345678900" name="CNH">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a CNH.</div> 
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="EstadoCivil" class="form-label fw-semibold kpi-title">ESTADO CIVIL</label>
-                                    <select class="form-select custom-select bg-light border-0 py-2" id="EstadoCivil" aria-label="EstadoCivil" required>
-                                        <option value="" selected>Selecione uma opção</option>
-                                        <option value="1">Solteiro(a)</option>
-                                        <option value="2">Casado(a)</option>
-                                        <option value="3">Divorciado(a)</option>
-                                        <option value="4">Viúvo(a)</option>
-                                    </select>
+                                    <div class="input-group shadow-sm">
+                                        <select class="form-select custom-select bg-light border-0 py-2" id="EstadoCivil" aria-label="EstadoCivil" required>
+                                            <option value="" selected>Selecione uma opção</option>
+                                            <option value="1">Solteiro(a)</option>
+                                            <option value="2">Casado(a)</option>
+                                            <option value="3">Divorciado(a)</option>
+                                            <option value="4">Viúvo(a)</option>
+                                        </select>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="DataNascimento" class="form-label fw-semibold kpi-title">Data de nascimento</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="DataNascimento" placeholder="Ex: 01/01/1990" name="DataNascimento">
-                                    <div class="invalid-feedback">Por favor, preencha a data de nascimento.</div> 
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="DataNascimento" placeholder="Ex: 01/01/1990" name="DataNascimento">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a data de nascimento.</div> 
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="telefone" class="form-label fw-semibold kpi-title">TELEFONE</label>
-                                    <input type="tel" class="form-control bg-light border-0 py-2" id="telefone" placeholder="Ex: (11) 99999-8888" name="telefone" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" required>
+                                    <div class="input-group shadow-sm">
+                                        <input type="tel" class="form-control bg-light border-0 py-2" id="telefone" placeholder="Ex: (11) 99999-8888" name="telefone" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha um telefone válido.</div>
+                                    </div>
                                     <small class="text-muted">Formato: (XX) XXXXX-XXXX</small>
-                                    <div class="invalid-feedback">Por favor, preencha um telefone válido.</div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="email" class="form-label fw-semibold kpi-title">E-MAIL <span class="text-muted">(Opcional)</span></label>
-                                    <input type="email" class="form-control bg-light border-0 py-2" id="email" placeholder="Ex: joao.silva@email.com" name="email">
-                                    <div class="invalid-feedback">Por favor, preencha um e-mail válido.</div>
+                                    <div class="input-group shadow-sm">
+                                        <input type="email" class="form-control bg-light border-0 py-2" id="email" placeholder="Ex: joao.silva@email.com" name="email">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha um e-mail válido.</div>
+                                    </div>
                                 </div>
                                 
                                 <div class="col-md-12">
                                     <label for="pwd" class="form-label fw-semibold kpi-title">SENHA DE ACESSO</label>
-                                    <input type="password" class="form-control bg-light border-0 py-2" id="pwd" placeholder="Digite uma senha forte" name="pswd" required>
-                                    <div class="invalid-feedback">A senha é obrigatória.</div>
+                                    <div class="input-group shadow-sm">
+                                        <input type="password" class="form-control bg-light border-0 py-2" id="pwd" placeholder="Digite uma senha forte" name="pswd" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">A senha é obrigatória.</div>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -224,38 +248,53 @@
                             <div class="row g-3"> 
                                  <div class="col-md-12 align-self-start">
                                     <label for="modelo" class="form-label fw-semibold kpi-title">MODELO</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="modelo" placeholder="Ex: Mercedes-Benz Sprinter" name="modelo" required>
-                                    <div class="invalid-feedback">Por favor, preencha o modelo do veículo.</div>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="modelo" placeholder="Ex: Mercedes-Benz Sprinter" name="modelo" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o modelo do veículo.</div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="placa" class="form-label fw-semibold kpi-title">PLACA</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="placa" placeholder="Ex: ABC-1234" name="placa" required>
-                                    <div class="invalid-feedback">Por favor, preencha a placa do veículo.</div>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="placa" placeholder="Ex: ABC-1234" name="placa" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a placa do veículo.</div>
+                                    </div>
                                 </div>
                             
                                 <div class="col-md-6 align-self-end">
                                     <label for="ano" class="form-label fw-semibold kpi-title">ANO</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="ano" placeholder="Ex: 2020" name="ano" required>
-                                    <div class="invalid-feedback">Por favor, preencha o ano do veículo.</div>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="ano" placeholder="Ex: 2020" name="ano" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o ano do veículo.</div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="placa" class="form-label fw-semibold kpi-title">QUILOMETROS RODADOS</label>
-                                    <input type="text" class="form-control bg-light border-0 py-2" id="km" placeholder="Ex: 0 km" name="km" required>
-                                    <div class="invalid-feedback">Por favor, preencha a quantidade de quilômetros rodados pelo veículo.</div>
+                                    <label for="km" class="form-label fw-semibold kpi-title">QUILOMETROS RODADOS</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="km" placeholder="Ex: 0 km" name="km" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a quantidade de quilômetros rodados pelo veículo.</div>
+                                    </div>
                                 </div>
                             
                                 <div class="col-md-6">
                                     <label for="Capacidade" class="form-label fw-semibold kpi-title">CAPACIDADE</label>
-                                    <select class="form-select custom-select bg-light border-0 py-2" id="Capacidade" aria-label="Capacidade" required>
-                                        <option value="" selected>Selecione uma opção</option>
-                                        <option value="1">3/4</option>
-                                        <option value="2">Toco</option>
-                                        <option value="3">Truck</option>
-                                        <option value="4">5 eixos</option>
-                                        <option value="5">Eixo extendido</option>
-                                    </select>
+                                    <div class="input-group shadow-sm">
+                                        <select class="form-select custom-select bg-light border-0 py-2" id="Capacidade" aria-label="Capacidade" required>
+                                            <option value="" selected>Selecione uma opção</option>
+                                            <option value="1">3/4</option>
+                                            <option value="2">Toco</option>
+                                            <option value="3">Truck</option>
+                                            <option value="4">5 eixos</option>
+                                            <option value="5">Eixo extendido</option>
+                                        </select>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -270,6 +309,185 @@
                             <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
                                 <button type="submit" class="btn btn-primary px-4">Salvar Cadastro</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalEditMotorista" tabindex="-1" aria-labelledby="modalEditMotoristaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg"> 
+                <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+                    
+                    <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
+                        <h5 class="modal-title fw-bold" id="modalEditMotoristaLabel">
+                            <i class="fa-solid fa-user-pen text-primary me-2"></i> Editar Motorista
+                        </h5>
+                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body p-4">
+                        <form id="formEditMotorista" class="needs-validation" novalidate>
+                            
+                            <div class="row g-3"> 
+                                <div class="col-md-12">
+                                    <label for="edit_name" class="form-label fw-semibold kpi-title">NOME COMPLETO</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_name" name="edit_name" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o nome completo.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_cpf" class="form-label fw-semibold kpi-title">CPF</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_cpf" name="edit_cpf" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o CPF.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="edit_CNH" class="form-label fw-semibold kpi-title">CNH</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_CNH" name="edit_CNH">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a CNH.</div> 
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_EstadoCivil" class="form-label fw-semibold kpi-title">ESTADO CIVIL</label>
+                                    <div class="input-group shadow-sm">
+                                        <select class="form-select custom-select bg-light border-0 py-2" id="edit_EstadoCivil" aria-label="EstadoCivil" required>
+                                            <option value="" selected>Selecione uma opção</option>
+                                            <option value="1">Solteiro(a)</option>
+                                            <option value="2">Casado(a)</option>
+                                            <option value="3">Divorciado(a)</option>
+                                            <option value="4">Viúvo(a)</option>
+                                        </select>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_DataNascimento" class="form-label fw-semibold kpi-title">Data de nascimento</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_DataNascimento" name="edit_DataNascimento">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a data de nascimento.</div> 
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_telefone" class="form-label fw-semibold kpi-title">TELEFONE</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="tel" class="form-control bg-light border-0 py-2" id="edit_telefone" name="edit_telefone" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha um telefone válido.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_email" class="form-label fw-semibold kpi-title">E-MAIL <span class="text-muted">(Opcional)</span></label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="email" class="form-control bg-light border-0 py-2" id="edit_email" name="edit_email">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha um e-mail válido.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <label for="edit_pwd" class="form-label fw-semibold kpi-title">NOVA SENHA DE ACESSO <span class="text-muted">(Opcional)</span></label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="password" class="form-control bg-light border-0 py-2" id="edit_pwd" placeholder="Deixe em branco para manter a atual" name="edit_pwd">
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                                <button type="submit" class="btn btn-primary px-4">Salvar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalEditVeiculo" tabindex="-1" aria-labelledby="modalEditVeiculoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg"> 
+                <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+                    
+                    <div class="modal-header border-bottom-0 pb-0 pt-4 px-4">
+                        <h5 class="modal-title fw-bold" id="modalEditVeiculoLabel">
+                            <i class="fa-solid fa-pen-to-square text-primary me-2"></i> Editar Veículo
+                        </h5>
+                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body p-4">
+                        <form id="formEditVeiculo" class="needs-validation" novalidate>
+                            
+                            <div class="row g-3"> 
+                                 <div class="col-md-12 align-self-start">
+                                    <label for="edit_modelo" class="form-label fw-semibold kpi-title">MODELO</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_modelo" name="edit_modelo" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o modelo do veículo.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_placa" class="form-label fw-semibold kpi-title">PLACA</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_placa" name="edit_placa" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a placa do veículo.</div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6 align-self-end">
+                                    <label for="edit_ano" class="form-label fw-semibold kpi-title">ANO</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_ano" name="edit_ano" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha o ano do veículo.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="edit_km" class="form-label fw-semibold kpi-title">QUILOMETROS RODADOS</label>
+                                    <div class="input-group shadow-sm">
+                                        <input type="text" class="form-control bg-light border-0 py-2" id="edit_km" name="edit_km" required>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                        <div class="invalid-feedback">Por favor, preencha a quantidade de quilômetros rodados pelo veículo.</div>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-6">
+                                    <label for="edit_Capacidade" class="form-label fw-semibold kpi-title">CAPACIDADE</label>
+                                    <div class="input-group shadow-sm">
+                                        <select class="form-select custom-select bg-light border-0 py-2" id="edit_Capacidade" aria-label="Capacidade" required>
+                                            <option value="" selected>Selecione uma opção</option>
+                                            <option value="1">3/4</option>
+                                            <option value="2">Toco</option>
+                                            <option value="3">Truck</option>
+                                            <option value="4">5 eixos</option>
+                                            <option value="5">Eixo extendido</option>
+                                        </select>
+                                        <button class="btn btn-light text-primary border-0 btn-edit-inline d-none" type="button" onclick="toggleFieldEdit(this)"><i class="fa-solid fa-pen"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                                <button type="submit" class="btn btn-primary px-4">Salvar Alterações</button>
                             </div>
                         </form>
                     </div>
